@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".ZyqLibraryActivity">
+
+    <LinearLayout
+        android:id="@+id/findlayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+        android:orientation="horizontal"
+    >
+        <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="请输入查找内容"
+        android:id="@+id/findedit"
+            android:layout_weight="1"
+        />
+        <ImageButton
+            android:id="@+id/finding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/find1"
+
+            android:background="#FFFFFF"
+            />
+
+    </LinearLayout>
+    <ListView
+        android:id="@+id/listview1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+
+        android:layout_alignParentBottom="true">
+
+        <TextView
+            android:id="@+id/poetry"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="诗歌"
+            android:textSize="20sp"
+            android:background="#ffffff"
+            android:textColor="#000000"
+            />
+        <TextView
+            android:id="@+id/prose"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="散文"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="#000000"
+            android:textColor="#ffffff"
+            />
+        <TextView
+            android:id="@+id/littlenovel"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="小说"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="#000000"
+            android:textColor="#ffffff"
+            />
+        <TextView
+            android:id="@+id/travelnotes"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="游记"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:background="#000000"
+            android:textColor="#ffffff"
+        />
+
+
+    </LinearLayout>
+
+</LinearLayout>

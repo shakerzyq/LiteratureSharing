@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".ZyqFindPwdEditActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="问题一"
+        android:padding="10dp"
+        />
+    <TextView
+        android:id="@+id/question1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    <EditText
+        android:id="@+id/answer_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="填入你的答案"
+        android:padding="10dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:text="问题二"
+        android:padding="10dp"
+        />
+    <TextView
+        android:id="@+id/question2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    <EditText
+        android:id="@+id/answer_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="填入你的答案"
+        android:padding="10dp"
+        />
+
+    <Button
+        android:id="@+id/findpwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="找回密码"
+        />
+
+
+
+
+</LinearLayout>
