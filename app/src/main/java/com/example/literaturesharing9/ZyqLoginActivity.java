@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.gson.JsonObject;
 
@@ -50,6 +51,11 @@ public class ZyqLoginActivity extends AppCompatActivity {
 
         editText = findViewById(R.id.yonghu);
         editText1 = findViewById(R.id.password);
+
+
+       /* Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar.setTitle("");
+        setSupportActionBar(mToolbar);*/
 
         editText.addTextChangedListener(textWatcher);
         editText1.addTextChangedListener(textWatcher);

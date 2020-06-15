@@ -45,9 +45,6 @@ public class ZyqFindPwdEditActivity extends AppCompatActivity {
         final EditText answer2 = findViewById(R.id.answer_2);
 
         Button button = findViewById(R.id.findpwd);
-        //ArticleForFind appList = gson.fromJson(jsonData, new TypeToken<List<ArticleForFind>>() {}.getType());
-        //Gson gson = new Gson();
-       // PwdProtect  pwdProtect = gson.fromJson(responseData, new TypeToken<PwdProtect>() {}.getType());
         final PwdProtect pwdProtect = JsonAndObject.toPwdProtect(responseData);
 
         //将问题内容复制给两个textview

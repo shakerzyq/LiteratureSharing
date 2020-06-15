@@ -1,11 +1,13 @@
 package com.example.literaturesharing9;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -64,17 +66,24 @@ public class ZyqFindPwdActivity extends AppCompatActivity {
                                             intent.putExtras(bundle);
                                             startActivity(intent);
                                             //finish();
+                                        }else{
+                                            showToastInThread(ZyqFindPwdActivity.this, "该账号不存在");
                                         }
                                     }
                                 });
                     }
-                    if (responseData.equals("")) {
-                        textView.setText("该账号不存在");
-                        url=url1;
-                    }
                 }else{
                     textView.setText("请输入电话号码");
                 }
+            }
+        });
+    }
+    // 实现在子线程中显示Toast
+    private void showToastInThread(final Context context, final String msg) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(context, msg, Toast.LENGTH_LONG).show();
             }
         });
     }
