@@ -34,4 +34,5 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:3.4.1'
     implementation 'com.google.code.gson:gson:2.7'
     implementation 'com.loopj.android:android-async-http:1.4.9'
+    implementation 'com.yanzhenjie:recyclerview-swipe:1.1.4'
 }

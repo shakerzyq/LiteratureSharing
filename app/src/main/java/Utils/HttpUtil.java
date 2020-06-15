@@ -69,6 +69,7 @@ public class HttpUtil {
                 .url(address)
                 .post(requestBody)
                 .build();
+        System.out.println("1234");
         client.newCall(request).enqueue(callback);
         // Response response =client.newCall(request).execute();
 
@@ -82,6 +83,7 @@ public class HttpUtil {
                 .post(requestBody)
                 .build();
         client.newCall(request).enqueue(callback);
+        System.out.println("1234");
     }
     //用于查询所有
     public static void sendOkHttpRequest(String address,String type,okhttp3.Callback callback){
