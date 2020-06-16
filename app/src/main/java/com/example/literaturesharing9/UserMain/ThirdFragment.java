@@ -34,7 +34,6 @@ public class ThirdFragment extends Fragment {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-
             switch (msg.what) {
                 case 0:
                     Toast.makeText(getContext(), (String) msg.obj,Toast.LENGTH_LONG).show();

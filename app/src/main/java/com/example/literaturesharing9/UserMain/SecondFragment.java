@@ -30,9 +30,11 @@ public class SecondFragment extends Fragment {
     public interface  callback{
         public String setdata(String data);
     }
+
     public SecondFragment(ArrayList<work>list){
         this.list=list;
     }
+
     public void setCallback(callback callback){
         this.callback=callback;
     }
