@@ -81,10 +81,6 @@ public class FirstFragment extends Fragment implements AdapterView.OnItemSelecte
         return view;
     }
 
-
-
-
-
     public void init(){
         nameupdate.setHint(user.getUsername());
         autographupdate.setHint(user.getAutograph());
@@ -137,9 +133,6 @@ public class FirstFragment extends Fragment implements AdapterView.OnItemSelecte
                 break;
         }
     }
-
-
-
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
@@ -224,5 +217,4 @@ public class FirstFragment extends Fragment implements AdapterView.OnItemSelecte
         getTask task=new getTask();
         task.execute(path,user1);
     }
-
 }

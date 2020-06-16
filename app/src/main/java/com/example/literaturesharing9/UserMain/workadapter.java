@@ -82,6 +82,4 @@ public class workadapter extends RecyclerView.Adapter<workadapter.MyViewHolder>{
     public int getItemCount() {
         return list.size();
     }
-
-
 }
