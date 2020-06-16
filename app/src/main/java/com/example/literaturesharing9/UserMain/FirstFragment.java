@@ -1,7 +1,10 @@
 package com.example.literaturesharing9.UserMain;
-
-
-
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,13 +13,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
-
 import androidx.fragment.app.Fragment;
-
 import com.example.literaturesharing9.R;
 import com.google.gson.Gson;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -24,12 +25,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-
-
 public class FirstFragment extends Fragment implements AdapterView.OnItemSelectedListener {
     private com.example.literaturesharing9.UserMain.user user;
     private EditText nameupdate;
     private EditText autographupdate;
+    private ImageView img;
     private Spinner year;
     private Spinner month;
     private Spinner day;
@@ -52,6 +52,7 @@ public class FirstFragment extends Fragment implements AdapterView.OnItemSelecte
         day=(Spinner)view.findViewById(R.id.spin_day);
         sex=(Spinner)view.findViewById(R.id.spin_sex);
         save=(Button)view.findViewById(R.id.save);
+        img=(ImageView)view.findViewById(R.id.update_image);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +78,20 @@ public class FirstFragment extends Fragment implements AdapterView.OnItemSelecte
         }else{
             sex.setSelection(1);
         }
+        //圆形图片
+        //头像制作成圆形
+        BitmapDrawable drawable=(BitmapDrawable)img.getDrawable();
+        Bitmap bitmap=drawable.getBitmap();
+        int width = drawable.getIntrinsicWidth();;
+        System.out.println(width);
+        Bitmap resultmap=Bitmap.createBitmap(width,width,Bitmap.Config.ARGB_8888);
+        Paint paint=new Paint();
+        Canvas canvas=new Canvas(resultmap);
+        canvas.drawCircle(width/2,width/2,width/2,paint);
+        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        canvas.drawBitmap(bitmap, 0, 0, paint);
+        img.setImageBitmap(resultmap);
+        //bitmap.recycle();
     }
 
     @Override

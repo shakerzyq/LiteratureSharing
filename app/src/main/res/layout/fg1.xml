@@ -6,7 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     >
+    <ImageView
+        android:id="@+id/update_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/image" />
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -14,6 +21,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
             android:textSize="20dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
@@ -35,6 +43,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
             android:textSize="20dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
@@ -45,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:entries="@array/sex"
-            android:prompt="@string/app_name"
+            android:prompt="@string/sex_value"
             android:spinnerMode="dialog" />
     </LinearLayout>
     <LinearLayout
@@ -54,6 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
+            android:layout_marginLeft="60dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
@@ -66,22 +76,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:entries="@array/year"
-            android:prompt="@string/app_name"
+            android:prompt="@string/year_value"
             android:spinnerMode="dialog" />
         <Spinner
             android:id="@+id/spin_month"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:entries="@array/month"
-            android:prompt="@string/app_name"
+            android:prompt="@string/month_value"
             android:spinnerMode="dialog" />
         <Spinner
             android:id="@+id/spin_day"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:entries="@array/day"
-            android:prompt="@string/app_name"
-            android:spinnerMode="dialog" />sa
+            android:prompt="@string/day_value"
+            android:spinnerMode="dialog" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
@@ -91,6 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
+            android:layout_marginLeft="60dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:inputType="textPersonName"
@@ -106,6 +117,7 @@
             android:inputType="textMultiLine" />
     </LinearLayout>
     <Button
+        android:gravity="center"
         android:id="@+id/save"
         android:text="保存"
         android:layout_width="wrap_content"

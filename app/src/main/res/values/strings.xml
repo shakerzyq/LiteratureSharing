@@ -1,6 +1,5 @@
 <resources>
-<<<<<<< HEAD
-    <string name="app_name">LiteratureSharing</string>
+
     <string-array name="wrokitem">
         <item>诗歌</item>
         <item>小说</item>
@@ -78,9 +77,12 @@
         <item>29</item>
         <item>30</item>
         <item>31</item>
-
     </string-array>
-=======
+    <string name="year_value">年份</string>
+    <string name="month_value">月份</string>
+    <string name="day_value">日份</string>
+    <string name="sex_value">性别</string>
+    <string name="type_value">类型</string>
     <string name="app_name">悦文</string>
 >>>>>>> 38b9ad86ef75ea60b631db5eefa700ad53a151cb
 </resources>

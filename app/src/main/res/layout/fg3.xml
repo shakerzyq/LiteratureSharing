@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     >
     <LinearLayout
         android:orientation="horizontal"
@@ -15,6 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
+            android:layout_marginLeft="60dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:inputType="textPersonName"
@@ -36,6 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
+            android:layout_marginLeft="60dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:inputType="textPersonName"
@@ -45,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:entries="@array/wrokitem"
-            android:prompt="@string/app_name"
+            android:prompt="@string/type_value"
             android:spinnerMode="dialog" />
     </LinearLayout>
     <LinearLayout
@@ -56,6 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
+            android:layout_marginLeft="60dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:inputType="textPersonName"

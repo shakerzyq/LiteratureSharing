@@ -6,14 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.literaturesharing9.R;
-
 import java.util.ArrayList;
-
 public class workadapter extends RecyclerView.Adapter<workadapter.MyViewHolder>{
     private ArrayList<work> list;
     private Context mcontext;

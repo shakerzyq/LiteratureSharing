@@ -1,7 +1,6 @@
 package com.example.literaturesharing9.UserMain;
 
 import androidx.fragment.app.Fragment;
-
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,11 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.example.literaturesharing9.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -26,7 +23,6 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.Calendar;
-
 public class ThirdFragment extends Fragment {
     private com.example.literaturesharing9.UserMain.user user;
     private EditText workname;
