@@ -244,7 +244,6 @@ public class drawer extends FragmentActivity implements View.OnClickListener{
                         Gson gson=new Gson();  //引用谷歌的json包
                         user=gson.fromJson(data,new TypeToken<user>(){}.getType());
                     }
-
                     return "";
                 }
             } catch (ProtocolException e) {

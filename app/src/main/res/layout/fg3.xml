@@ -1,32 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
-    >
+    android:gravity="center">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22dp"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:text="每日一作"
+        />
     <LinearLayout
         android:orientation="horizontal"
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="标题:"
             android:textSize="20dp"
+            android:textColor="#000000"
             android:layout_marginLeft="60dp"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:inputType="textPersonName"
-            android:hint="标题:" />
+            android:layout_centerHorizontal="true"/>
         <EditText
             android:id="@+id/workname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:ems="10"
+            android:textColor="#000000"
             android:inputType="textPersonName" />
     </LinearLayout>
     <LinearLayout
@@ -38,16 +45,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
+            android:text="类型:"
+            android:textColor="#000000"
             android:layout_marginLeft="60dp"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:inputType="textPersonName"
-            android:hint="类型:" />
+            android:layout_centerHorizontal="true"/>
         <Spinner
             android:id="@+id/worktype"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:entries="@array/wrokitem"
+            android:textColor="#000000"
             android:prompt="@string/type_value"
             android:spinnerMode="dialog" />
     </LinearLayout>
@@ -59,17 +67,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20dp"
+            android:text="内容:"
+            android:textColor="#000000"
             android:layout_marginLeft="60dp"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:inputType="textPersonName"
-            android:hint="内容:" />
+            android:layout_centerHorizontal="true"/>
         <EditText
             android:id="@+id/workcontent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:singleLine="false"
+            android:textColor="#000000"
             android:lines="5"
             android:ems="10"
             android:inputType="textMultiLine" />
@@ -77,6 +86,7 @@
     <Button
         android:id="@+id/save"
         android:text="发布"
+        android:textColor="#000000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </LinearLayout>
