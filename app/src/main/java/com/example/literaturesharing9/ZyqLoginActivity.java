@@ -174,4 +174,10 @@ public class ZyqLoginActivity extends AppCompatActivity {
 
         }
     };
+
+    //添加返回监听
+    @Override
+    public void onBackPressed() {
+        ZyqLoginActivity.this.finish();
+    }
 }
