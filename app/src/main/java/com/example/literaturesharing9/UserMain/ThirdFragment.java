@@ -92,8 +92,8 @@ public class ThirdFragment extends Fragment {
                         mHandler.sendMessage(msg);
                     }else {
                         Message msg = new Message();
-                        msg.what=1;
-                        msg.obj = "发表成功，等待系统审核";
+                        msg.what=0;
+                        msg.obj = "发表失败，请稍后重试";
                         mHandler.sendMessage(msg);
                     }
                     return "";
@@ -121,6 +121,20 @@ public class ThirdFragment extends Fragment {
             type=3;
         }
         String content=workcontent.getText().toString();
+        if(name.equals("")){
+            Message msg = new Message();
+            msg.what=0;
+            msg.obj = "标题不能为空";
+            mHandler.sendMessage(msg);
+            return;
+        }
+        if(content.equals("")){
+            Message msg = new Message();
+            msg.what=0;
+            msg.obj = "内容不能为空";
+            mHandler.sendMessage(msg);
+            return;
+        }
         String userid=user.getUserid();
         final Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);

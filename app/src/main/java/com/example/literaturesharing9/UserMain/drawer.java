@@ -56,15 +56,12 @@ public class drawer extends FragmentActivity implements View.OnClickListener{
     LinearLayout zhu;
     private String id;
     Handler mHandler = new Handler() {
-
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             switch (msg.what) {
                 case 1:
-                    clearChioce(); // 清空, 重置选项, 隐藏所有Fragment
-                    hideFragments(fragmentTransaction);
                     ArrayList<work> data = (ArrayList<work>) msg.obj;
                     if (fg2 == null) {
                         fg2 = new SecondFragment(data);
@@ -87,33 +84,6 @@ public class drawer extends FragmentActivity implements View.OnClickListener{
         zhu=(LinearLayout)findViewById(R.id.draw_left_menu);
         fragmentManager = getSupportFragmentManager();
         InitView();
-        /*RelativeLayout=(Button)findViewById(R.id.third_botton);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-                draw.openDrawer(zhu);
-            }
-        });
-        button1=(Button)findViewById(R.id.draw_button);
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                draw.closeDrawer(zhu);
-            }
-        });*/
-        //侧滑菜单全屏
-        /*DisplayMetrics metric = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metric);
-        int windowsWight = metric.widthPixels;
-        int windowsHeight = metric.heightPixels;
-        View leftMenu = zhu;
-        ViewGroup.LayoutParams leftParams = leftMenu.getLayoutParams();
-        leftParams.height = windowsHeight;
-        leftParams.width = windowsWight;
-        leftMenu.setLayoutParams(leftParams);*/
-        /*PackageManager pm = getPackageManager();
-        boolean permission = (PackageManager.PERMISSION_GRANTED ==  pm.checkPermission("android.permission.INTERNET",  "com.example.literaturesharing"));
-        System.out.println(permission);*/
     }
 
     public void InitView(){
@@ -171,25 +141,29 @@ public class drawer extends FragmentActivity implements View.OnClickListener{
 
     }
 
-    private void hideFragments(FragmentTransaction fragmentTransaction) {
+    private void removeFragments(FragmentTransaction fragmentTransaction) {
         if (fg1 != null) {
-            fragmentTransaction.hide(fg1);
+            fragmentTransaction.remove(fg1);
+            fg1=null;
         }
         if (fg2 != null) {
-            fragmentTransaction.hide(fg2);
+            fragmentTransaction.remove(fg2);
+            fg2=null;
         }
         if (fg3 != null) {
-            fragmentTransaction.hide(fg3);
+            fragmentTransaction.remove(fg3);
+            fg3=null;
         }
         if (fg4 != null) {
-            fragmentTransaction.hide(fg4);
+            fragmentTransaction.remove(fg4);
+            fg4=null;
         }
     }
 
     private void setChioceItem(int index) {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         clearChioce(); // 清空, 重置选项, 隐藏所有Fragment
-        hideFragments(fragmentTransaction);
+        removeFragments(fragmentTransaction);
         switch (index) {
             case 0:
                 firstText.setTextColor(dark);
@@ -207,6 +181,7 @@ public class drawer extends FragmentActivity implements View.OnClickListener{
                 secondLayout.setBackgroundColor(gray);
                 flag="1";
                 getWork();
+                fragmentTransaction.commit();
                 break;
             case 2:
                 thirdText.setTextColor(dark);
@@ -221,10 +196,9 @@ public class drawer extends FragmentActivity implements View.OnClickListener{
                 break;
             case 3:
                 fourthText.setTextColor(dark);
+                System.out.println(user);
                 fourthLayout.setBackgroundColor(gray);
                 flag="2";
-                clearChioce(); // 清空, 重置选项, 隐藏所有Fragment
-                hideFragments(fragmentTransaction);
                 if (fg4 == null) {
                     fg4 = new FourFragment(user);
                     fragmentTransaction.add(R.id.content, fg4);
@@ -266,7 +240,7 @@ public class drawer extends FragmentActivity implements View.OnClickListener{
                         msg.obj = worklist;
                         mHandler.sendMessage(msg);
                     }
-                    if (flag.equals("2")) {
+                    else{
                         Gson gson=new Gson();  //引用谷歌的json包
                         user=gson.fromJson(data,new TypeToken<user>(){}.getType());
                     }

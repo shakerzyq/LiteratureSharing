@@ -7,6 +7,8 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
+
 import androidx.fragment.app.Fragment;
 import com.example.literaturesharing9.R;
 import com.google.gson.Gson;
@@ -39,9 +43,23 @@ public class FirstFragment extends Fragment implements AdapterView.OnItemSelecte
     private String monthtwo;
     private String daytwo;
     private String sextwo;
+    Handler mHandler = new Handler() {
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+
+            switch (msg.what) {
+                case 0:
+                    Toast.makeText(getContext(), (String) msg.obj,Toast.LENGTH_LONG).show();
+                    break;
+            }
+        }
+    };
     public FirstFragment(user user){
         this.user=user;
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fg1, container, false);
@@ -62,6 +80,10 @@ public class FirstFragment extends Fragment implements AdapterView.OnItemSelecte
         init();
         return view;
     }
+
+
+
+
 
     public void init(){
         nameupdate.setHint(user.getUsername());
@@ -91,6 +113,8 @@ public class FirstFragment extends Fragment implements AdapterView.OnItemSelecte
         paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
         canvas.drawBitmap(bitmap, 0, 0, paint);
         img.setImageBitmap(resultmap);
+        System.out.println(getContext());
+        System.out.println(getContext());
         //bitmap.recycle();
     }
 
@@ -147,7 +171,15 @@ public class FirstFragment extends Fragment implements AdapterView.OnItemSelecte
                     // 调用自己写的NetUtils() 将流转成string类型
                     String data1= acceptJSON.readString(inputStream);
                     if(data1.equals("1")){
-                        System.out.println("成功");
+                        Message msg = new Message();
+                        msg.what=0;
+                        msg.obj = "保存成功";
+                        mHandler.sendMessage(msg);
+                    }else{
+                        Message msg = new Message();
+                        msg.what=0;
+                        msg.obj = "保存失败";
+                        mHandler.sendMessage(msg);
                     }
                     return "";
                 }
@@ -163,17 +195,26 @@ public class FirstFragment extends Fragment implements AdapterView.OnItemSelecte
     }
 
     public void save(){
+        yeartwo=year.getSelectedItem().toString();
+        monthtwo=month.getSelectedItem().toString();
+        daytwo=day.getSelectedItem().toString();
+        sextwo=sex.getSelectedItem().toString();
+        String birthday=yeartwo+"-"+monthtwo+"-"+daytwo;
+        if(nameupdate.getText().toString().equals("")&&autographupdate.getText().toString().equals("")&&birthday.equals(user.getBirthday())&&
+            sextwo.equals(user.getSex())) {
+            Message msg = new Message();
+            msg.what=0;
+            msg.obj = "未做修改，无法保存！";
+            mHandler.sendMessage(msg);
+            return;
+        }
+
         if(!nameupdate.getText().toString().equals("")){
             user.setUsername(nameupdate.getText().toString());
         }
         if(!autographupdate.getText().toString().equals("")){
             user.setAutograph(autographupdate.getText().toString());
         }
-        yeartwo=year.getSelectedItem().toString();
-        monthtwo=month.getSelectedItem().toString();
-        daytwo=day.getSelectedItem().toString();
-        sextwo=sex.getSelectedItem().toString();
-        String birthday=yeartwo+"-"+monthtwo+"-"+daytwo;
         user.setBirthday(birthday);
         user.setSex(sextwo);
         Gson gson=new Gson();

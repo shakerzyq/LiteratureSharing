@@ -42,19 +42,6 @@ public class SecondFragment extends Fragment {
         recyclerView=(RecyclerView)view.findViewById(R.id.recycle_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
-        /*list=new ArrayList<work>();
-        list.add(new work("1","静夜沙1","你还是曾将那个少年没有一丝丝改变少时诵王企鹅无群二无群其味无穷二无群二无群二无群","2020-06-09",27));
-        list.add(new work("1","静夜沙1","3","2020-06-09",27));
-        list.add(new work("1","静夜沙1","3","2020-06-09",27));
-        list.add(new work("1","静夜沙1","3","2020-06-09",27));
-        list.add(new work("1","静夜沙1","3","2020-06-09",27));
-        list.add(new work("1","静夜沙1","3","2020-06-09",27));
-        list.add(new work("1","静夜沙1","3","2020-06-09",27));
-        list.add(new work("1","静夜沙1","3","2020-06-09",27));
-        list.add(new work("1","静夜沙1","3","2020-06-09",27));
-        list.add(new work("1","静夜沙1","3","2020-06-09",27));
-        list.add(new work("1","静夜沙1","3","2020-06-09",27));
-        list.add(new work("1","静夜沙1","3","2020-06-09",27));*/
         workadapter=new workadapter(list,getContext());
         recyclerView.setAdapter(workadapter);
         workadapter.setOnremoveListnner(new workadapter.OnremoveListnner() {
