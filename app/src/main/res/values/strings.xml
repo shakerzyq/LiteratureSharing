@@ -1,4 +1,5 @@
 <resources>
+<<<<<<< HEAD
     <string name="app_name">LiteratureSharing</string>
     <string-array name="wrokitem">
         <item>诗歌</item>
@@ -79,4 +80,7 @@
         <item>31</item>
 
     </string-array>
+=======
+    <string name="app_name">悦文</string>
+>>>>>>> 38b9ad86ef75ea60b631db5eefa700ad53a151cb
 </resources>
