@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        >
+
+      <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lmxtitle"
+            android:textSize="30sp"
+            android:layout_weight="1"
+            android:text="作品名"/>
+         <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/lmxzan"
+           android:text="类型"
+           android:layout_gravity="center_vertical"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lmxlike"
+            android:layout_gravity="center_vertical"
+            android:textSize="25sp"
+            android:text="赞"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lmxname"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:text="用户名"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lmxtype"
+            android:text="888"
+            android:paddingRight="10dp"
+            android:layout_gravity="center_vertical"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lmxcreatetime"
+            android:layout_gravity="center_vertical"
+            android:text="2000.1.1"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="5dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/lmx_textview_border"
+        >
+    <TextView
+
+        android:id="@+id/lmxcontentwork"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="8dp"
+        android:text="内容"
+
+
+
+        />
+    </LinearLayout>
+    <LinearLayout
+        android:background="#FCFAF9"
+        android:id="@+id/reallayout2"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingBottom="10dp"
+        >
+        <EditText
+            android:layout_gravity="bottom"
+            android:id="@+id/comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:lines="3"
+            android:gravity="top"
+            android:background="@drawable/edit_background"
+            android:hint="我也来说两句"
+            />
+        <Button
+
+            android:id="@+id/commentbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发表"
+            android:textSize="15sp"
+            android:layout_marginTop="35dp"
+            />
+        <ImageView
+            android:id="@+id/pinglun"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:src="@mipmap/pinglun"
+            />
+    </LinearLayout>
+</LinearLayout>
