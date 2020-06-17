@@ -10,6 +10,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.Toast;
+
 import com.example.literaturesharing9.R;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,7 +26,7 @@ public class SecondFragment extends Fragment {
     private AlertDialog.Builder builder;
     private boolean flag = true;
     private String id;
-    private RecyclerView recyclerView;
+    private GridView recyclerView;
     private ArrayList<work> list;
     private com.example.literaturesharing9.UserMain.workadapter workadapter;
     private String data;
@@ -41,9 +45,7 @@ public class SecondFragment extends Fragment {
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fg2, container, false);
-        recyclerView=(RecyclerView)view.findViewById(R.id.recycle_view);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerView=(GridView)view.findViewById(R.id.grid_zuopin);
         workadapter=new workadapter(list,getContext());
         recyclerView.setAdapter(workadapter);
         workadapter.setOnremoveListnner(new workadapter.OnremoveListnner() {
@@ -51,7 +53,6 @@ public class SecondFragment extends Fragment {
             public void ondelect(int i) {
                 id=list.get(i).getWorkid();
                 delete(i);
-
             }
         });
         return view;

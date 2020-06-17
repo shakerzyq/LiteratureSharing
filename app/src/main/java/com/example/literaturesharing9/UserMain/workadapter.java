@@ -1,20 +1,17 @@
 package com.example.literaturesharing9.UserMain;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 import com.example.literaturesharing9.R;
 import java.util.ArrayList;
-public class workadapter extends RecyclerView.Adapter<workadapter.MyViewHolder>{
-    private ArrayList<work> list;
-    private Context mcontext;
-    private AlertDialog.Builder builder;
-    private View itemView;
+public class workadapter extends BaseAdapter {
+    private ArrayList<work> mData;
+    private Context mContext;
     public interface OnremoveListnner{
         void  ondelect(int i);
     }
@@ -23,63 +20,43 @@ public class workadapter extends RecyclerView.Adapter<workadapter.MyViewHolder>{
     public void setOnremoveListnner(OnremoveListnner onremoveListnner) {
         this.onremoveListnner = onremoveListnner;
     }
-    public workadapter(ArrayList<work> list,Context mcontext){
-        this.list=list;
-        this.mcontext=mcontext;
+    public workadapter(ArrayList<work> mData, Context mContext) {
+        this.mData = mData;
+        this.mContext = mContext;
     }
-
-    class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView title;
-        TextView content;
-        TextView date;
-        TextView lovenumber;
-        public MyViewHolder(View itemView) {
-            super(itemView);
-            title= (TextView) itemView.findViewById(R.id.work_item_title);
-            content=(TextView) itemView.findViewById(R.id.work_item_content);
-            date=(TextView) itemView.findViewById(R.id.work_item_date);
-        }
-    }
-    @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        itemView= LayoutInflater.from(mcontext).inflate(R.layout.work_item,parent,false);
-        MyViewHolder view=new MyViewHolder(itemView);
-        return view;
+    public int getCount() {
+        return mData.size();
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        work work=list.get(position);
-        final int index=position;
-        holder.title.setText(work.getWorkname());
-        holder.content.setText(work.getWorkcontent());
-        holder.date.setText(work.getWorktime());
-        holder.title.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                onremoveListnner.ondelect(index);
-                return true;
-            }
-        });
-        holder.date.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                onremoveListnner.ondelect(index);
-                return true;
-            }
-        });
-        holder.content.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                onremoveListnner.ondelect(index);
-                return true;
-            }
-        });
+    public Object getItem(int position) {
+        return null;
     }
 
     @Override
-    public int getItemCount() {
-        return list.size();
+    public long getItemId(int position) {
+        return position;
+    }
+
+
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        convertView = LayoutInflater.from(mContext).inflate(R.layout.work_item,parent,false);
+        TextView title=(TextView) convertView.findViewById(R.id.work_item_title);
+        TextView name=(TextView)convertView.findViewById(R.id.work_item_content);
+        TextView date=(TextView)convertView.findViewById(R.id.work_item_date);
+        title.setText(mData.get(position).getWorkname());
+        name.setText(mData.get(position).getWorkcontent());
+        date.setText(mData.get(position).getWorktime());
+        convertView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                onremoveListnner.ondelect(position);
+                return true;
+            }
+        });
+
+        return convertView;
     }
 }
