@@ -1,16 +1,21 @@
 package com.example.literaturesharing9.UserMain;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -55,6 +60,10 @@ public class drawer extends FragmentActivity implements View.OnClickListener{
     Button button1;
     LinearLayout zhu;
     private String id;
+    private Context mContext;
+    public GridView grid_photo;
+    public IconAdapter mAdapter ;
+    private ArrayList<Icon> mData;
     Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -71,6 +80,8 @@ public class drawer extends FragmentActivity implements View.OnClickListener{
                     }
                     fragmentTransaction.commit();
                     break;
+                case 2:
+                    break;
                 default:
                     break;
             }
@@ -81,7 +92,7 @@ public class drawer extends FragmentActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.drawer);
         draw=(DrawerLayout)findViewById(R.id.draw);
-        zhu=(LinearLayout)findViewById(R.id.draw_left_menu);
+        //zhu=(LinearLayout)findViewById(R.id.draw_left_menu);
         fragmentManager = getSupportFragmentManager();
         InitView();
     }
@@ -103,6 +114,31 @@ public class drawer extends FragmentActivity implements View.OnClickListener{
         secondLayout.setOnClickListener(drawer.this);
         thirdLayout.setOnClickListener(drawer.this);
         fourthLayout.setOnClickListener(drawer.this);
+        mContext = drawer.this;
+        grid_photo = (GridView) findViewById(R.id.grid_photo);
+        mData = new ArrayList<Icon>();
+        mData.add(new Icon(R.drawable.image, "图标1"));
+        mData.add(new Icon(R.drawable.image1, "图标2"));
+        mData.add(new Icon(R.drawable.image2, "图标3"));
+        mData.add(new Icon(R.drawable.image3, "图标4"));
+        mData.add(new Icon(R.drawable.image4, "图标5"));
+        mData.add(new Icon(R.drawable.image5, "图标6"));
+        mAdapter = new IconAdapter(mData,mContext);
+        grid_photo.setAdapter(mAdapter);
+        grid_photo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                Toast.makeText(mContext, "你点击了~" + position + "~项", Toast.LENGTH_SHORT).show();
+                fg4.setCallback(new FourFragment.callback(){
+                    @Override
+                    public int setImage() {
+                       return mData.get(position).getiId();
+                    }
+                });
+                draw.closeDrawer(grid_photo);
+                fg4.getData();
+            }
+        });
         getUser("1");
     }
 
@@ -200,7 +236,7 @@ public class drawer extends FragmentActivity implements View.OnClickListener{
                 fourthLayout.setBackgroundColor(gray);
                 flag="2";
                 if (fg4 == null) {
-                    fg4 = new FourFragment(user);
+                    fg4 = new FourFragment(user,drawer.this);
                     fragmentTransaction.add(R.id.content, fg4);
                 } else {
                     fragmentTransaction.show(fg4);

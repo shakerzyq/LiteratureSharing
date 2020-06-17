@@ -31,6 +31,7 @@
         <activity android:name=".ZyqRegister2Activity" />
         <activity android:name=".ZyqRegister1Activity" />
         <activity android:name=".UserMain.drawer"/>
+        <activity android:name=".UserMain.IconActivity"/>
         <activity android:name=".ZyqLoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

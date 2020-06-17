@@ -2,6 +2,7 @@ package com.example.literaturesharing9.UserMain;
 
 import androidx.fragment.app.Fragment;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -27,8 +28,20 @@ public class FourFragment extends Fragment {
     private TextView birthday;
     private TextView label;
     private ImageView img;
-    public FourFragment(user user){
+    private drawer drawer;
+    private int image_id;
+    public callback callback;
+
+    public void setCallback(callback callback) {
+        this.callback=callback;
+    }
+
+    public interface callback{
+        public int setImage();
+    }
+    public FourFragment(user user,drawer drawer){
         this.user=user;
+        this.drawer=drawer;
     }
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fg4,container, false);
@@ -38,6 +51,12 @@ public class FourFragment extends Fragment {
         birthday=view.findViewById(R.id.birthday);
         label=view.findViewById(R.id.label);
         img=(ImageView)view.findViewById(R.id.head_image);
+        img.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                drawer.draw.openDrawer(drawer.grid_photo);
+            }
+        });
         init();
         return  view;
     }
@@ -48,6 +67,16 @@ public class FourFragment extends Fragment {
         sex.setText(user.getSex());
         birthday.setText(user.getBirthday());
         label.setText(user.getAutograph());
+        //头像制作成圆形
+        setCircleImage(img);
+    }
+
+    public void getData(){
+        img.setImageResource(callback.setImage());
+        setCircleImage(img);
+    }
+
+    public void setCircleImage(ImageView img){
         //头像制作成圆形
         BitmapDrawable drawable=(BitmapDrawable)img.getDrawable();
         Bitmap bitmap=drawable.getBitmap();
@@ -62,5 +91,6 @@ public class FourFragment extends Fragment {
         img.setImageBitmap(resultmap);
         //bitmap.recycle();
     }
+
 }
 
