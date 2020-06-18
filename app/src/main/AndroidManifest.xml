@@ -21,6 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".LmxRecommendActivity" />
+        <activity android:name=".LmxWorkShowActivity" />
+        <activity android:name=".LmxShowWorkActivity" />
+        <activity android:name=".LmxCommentShowActivity" />
         <activity android:name=".ZyqLibraryActivity" />
         <activity android:name=".ZyqTestActivity" />
         <activity android:name=".ZyqFindPwdShowActivity" />
@@ -30,8 +34,6 @@
         <activity android:name=".ZyqRegister3Activity" />
         <activity android:name=".ZyqRegister2Activity" />
         <activity android:name=".ZyqRegister1Activity" />
-        <activity android:name=".LmxRecommendActivity" />
-        <activity android:name=".LmxShowWorkActivity" />
         <activity android:name=".UserMain.drawer"/>
         <activity android:name=".ZyqLoginActivity">
             <intent-filter>

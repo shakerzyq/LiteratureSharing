@@ -62,22 +62,29 @@ public class ZyqRegister3Activity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String birthday = inputbirth.getText().toString();
+                String[] strlist = birthday.split("-");
+
                 if (!inputname.getText().equals("")&&!inputbirth.getText().equals("")&&!sex.equals("")){
-                    User user = new User(account,inputname.getText().toString(),password,
-                            inputbirth.getText().toString(),sex,inputidea.getText().toString()
-                            );
-                    requestBody = JsonAndObject.toJson(user);
-                    getResult();
-                    if (result1){
-                        Toast.makeText(ZyqRegister3Activity.this,"注册成功",Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(ZyqRegister3Activity.this,ZyqRegiste4Activity.class);
-                        Bundle bundle1 = new Bundle();
-                        bundle1.putString("account",account);
-                        intent.putExtras(bundle1);
-                        startActivity(intent);
-                        finish();
-                    }else{
-                        Toast.makeText(ZyqRegister3Activity.this,"抱歉!系统异常,注册失败!",Toast.LENGTH_LONG).show();
+                    if(strlist[0].length()==4&&strlist[1].length()==2&&strlist[2].length()==2) {
+                        User user = new User(account, inputname.getText().toString(), password,
+                                inputbirth.getText().toString(), sex, inputidea.getText().toString()
+                        );
+                        requestBody = JsonAndObject.toJson(user);
+                        getResult();
+                        if (result1) {
+                            Toast.makeText(ZyqRegister3Activity.this, "注册成功", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(ZyqRegister3Activity.this, ZyqRegiste4Activity.class);
+                            Bundle bundle1 = new Bundle();
+                            bundle1.putString("account", account);
+                            intent.putExtras(bundle1);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            Toast.makeText(ZyqRegister3Activity.this, "抱歉!系统异常,注册失败!", Toast.LENGTH_LONG).show();
+                        }
+                    }else {
+                        Toast.makeText(ZyqRegister3Activity.this, "生日格式不正确", Toast.LENGTH_SHORT).show();
                     }
 
 

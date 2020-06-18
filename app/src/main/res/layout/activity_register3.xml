@@ -20,7 +20,7 @@
         android:id="@+id/inputname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="输入您的昵称(不能为空)"
+        android:hint="输入您的昵称(不能为空) 格式为：2000-01-01"
         android:layout_below="@+id/text1"
         />
     <TextView

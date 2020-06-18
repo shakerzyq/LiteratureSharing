@@ -50,6 +50,7 @@ public class ZyqLibraryActivity extends AppCompatActivity {
     private TextView travelnoties;
     private ImageButton imageButton;
     private EditText editText;
+    private String id;
 
     private TextView[] list = {poetry,prose,littlenovel,travelnoties};
     private HttpUtil httpUtil = new HttpUtil();
@@ -64,9 +65,10 @@ public class ZyqLibraryActivity extends AppCompatActivity {
         editText = findViewById(R.id.findedit);
 
         //接收传递过来的userid
-        Bundle bundle = this.getIntent().getExtras();
-        userid = bundle.getString("userid");
-
+       // Bundle bundle = this.getIntent().getExtras();
+        Intent intent=getIntent();
+       // userid = bundle.getString("userid");
+        userid=intent.getStringExtra("id");
         list[0] = findViewById(R.id.poetry);
         list[1] = findViewById(R.id.prose);
         list[2] = findViewById(R.id.littlenovel);
@@ -224,7 +226,7 @@ public class ZyqLibraryActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         map = (Map<String, Object>) parent.getItemAtPosition(position);
                         //Toast.makeText(HistoryActivity.this,map.get("name").toString(),Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(ZyqLibraryActivity.this, LmxWorkShowActivity.class);
+                        Intent intent = new Intent(ZyqLibraryActivity.this, LmxShowWorkActivity.class);
                         Bundle bundle = new Bundle();
                         bundle.putString("writername", map.get("writername").toString());
                         bundle.putString("workname", map.get("workname").toString());
@@ -252,5 +254,11 @@ public class ZyqLibraryActivity extends AppCompatActivity {
 
 
         });
+    }
+
+    //添加返回监听
+    @Override
+    public void onBackPressed() {
+        ZyqLibraryActivity.this.finish();
     }
 }

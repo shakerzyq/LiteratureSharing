@@ -81,6 +81,8 @@ public class LmxShowWorkActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lmx_activity_show_work);
+
+
         Bundle bundle = this.getIntent().getExtras();
         userid = bundle.getString("userid");
         String writerid = bundle.getString("writerid'");
@@ -292,5 +294,10 @@ public class LmxShowWorkActivity extends AppCompatActivity {
                 lmxzan.setText(String.valueOf(work.getWorkZan()));
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+       LmxShowWorkActivity.this.finish();
     }
 }

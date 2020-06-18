@@ -69,22 +69,21 @@ public class workadapter extends BaseAdapter {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String id=v.findViewById(R.id.work_item_id).toString();
-                work work=null;
-                System.out.println(id);
+                TextView id=(TextView) v.findViewById(R.id.work_item_id);
+                work works=null;
                 int index=0;
                 for(int i=0;i<mData.size();i++){
-                    if(mData.get(i).getWorkid().equals(id)){
+                    if(mData.get(i).getWorkid().equals(id.getText().toString())){
                         index=i;
-                        work=mData.get(index);
+                        works=(work) mData.get(index);
                     }
                 }
                 Intent intent = new Intent(mContext, LmxShowWorkActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("writername",user.getUsername());
-                bundle.putString("workname",work.getWorkname());
-                bundle.putString("workid",work.getWorkid());
-                bundle.putString("writerid",work.getUserid());
+                bundle.putString("workname",works.getWorkname());
+                bundle.putString("workid",works.getWorkid());
+                bundle.putString("writerid",works.getUserid());
                 bundle.putString("userid",user.getUserid());
                 intent.putExtras(bundle);
                 fg2.startActivity(intent);

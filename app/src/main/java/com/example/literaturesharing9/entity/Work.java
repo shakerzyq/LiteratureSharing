@@ -4,7 +4,7 @@ package com.example.literaturesharing9.entity;
 import java.io.Serializable;
 
 public class Work implements Serializable {
-    private int workId;
+    private String workId;
     private String workName;
     private String workTime;
     private String type;
@@ -14,11 +14,11 @@ public class Work implements Serializable {
     private int workZan;
     private String userId;
 
-    public int getWorkId() {
+    public String getWorkId() {
         return workId;
     }
 
-    public void setWorkId(int workId) {
+    public void setWorkId(String workId) {
         this.workId = workId;
     }
 

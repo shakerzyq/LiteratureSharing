@@ -8,7 +8,7 @@ public class work{
     private String workcontent;
     private String type;
     private String worktime;
-    private int  pushstatus;
+    private int pushstatus;
     private int auditstatus;
     private int workzan;
     private String userid;
@@ -51,10 +51,6 @@ public class work{
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public int getPushstatus() {
         return pushstatus;
     }
@@ -69,6 +65,10 @@ public class work{
 
     public void setAuditstatus(int auditstatus) {
         this.auditstatus = auditstatus;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public int getWorkzan() {

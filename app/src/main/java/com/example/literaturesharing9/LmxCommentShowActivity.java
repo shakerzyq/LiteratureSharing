@@ -108,21 +108,6 @@ public class LmxCommentShowActivity extends AppCompatActivity {
                         , new String[]{"username", "time","comment"}, new int[]{R.id.username, R.id.timecomment,R.id.commectcontent});
 
                 listView.setAdapter(adapter);
-                /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        map = (Map<String, Object>) parent.getItemAtPosition(position);
-                        //Toast.makeText(HistoryActivity.this,map.get("name").toString(),Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(LmxCommentShowActivity.this, LmxWorkShowActivity.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putString("workname", map.get("workname").toString());
-                        bundle.putString("workid", map.get("workid").toString());
-                        bundle.putString("writerid", map.get("writerid").toString());
-                       // bundle.putString("userid", userid);
-                        intent.putExtras(bundle);
-                        startActivity(intent);
-                    }
-                });*/
                 registerForContextMenu(listView);
             }
 
@@ -140,6 +125,11 @@ public class LmxCommentShowActivity extends AppCompatActivity {
 
 
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        LmxCommentShowActivity.this.finish();
     }
 
 }

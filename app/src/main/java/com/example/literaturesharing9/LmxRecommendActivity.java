@@ -47,6 +47,7 @@ public class LmxRecommendActivity extends AppCompatActivity {
     private String url2="http://10.0.2.2:8081/FindWorks/";
     private String url3="http://10.0.2.2:8081/FindWorks/";
 
+    public static String idUser;
 
     private ArrayList<Work> work_list = new ArrayList<Work>();
     private HttpUtil httpUtil = new HttpUtil();
@@ -72,13 +73,13 @@ public class LmxRecommendActivity extends AppCompatActivity {
 
         TextView textView = findViewById(R.id.tuijian);
         TextView textView1 = findViewById(R.id.wenku);
-        TextView textView2 = findViewById(R.id.chuangzuo);
         TextView textView3 = findViewById(R.id.yonghucenter);
 
         //刷新推荐
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                listitem = new ArrayList<Map<String,Object>>();
                 sendRequestWithOkHttp();
             }
         });
@@ -88,20 +89,11 @@ public class LmxRecommendActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LmxRecommendActivity.this,ZyqLibraryActivity.class);
-                Bundle bundle1 = new Bundle();
-                bundle1.putString("userid",userid);
-                intent.putExtras(bundle1);
+                intent.putExtra("id",userid);
                 startActivity(intent);
             }
         });
 
-        //进入创作中心
-        textView2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
         //进入用户中心
         textView3.setOnClickListener(new View.OnClickListener() {
