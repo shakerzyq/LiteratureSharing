@@ -30,6 +30,7 @@
         <activity android:name=".ZyqRegister3Activity" />
         <activity android:name=".ZyqRegister2Activity" />
         <activity android:name=".ZyqRegister1Activity" />
+        <activity android:name=".LmxRecommendActivity" />
         <activity android:name=".UserMain.drawer"/>
         <activity android:name=".ZyqLoginActivity">
             <intent-filter>

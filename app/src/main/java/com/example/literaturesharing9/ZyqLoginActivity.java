@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+//import com.example.literaturesharing9.UserMain.drawer;
 import com.example.literaturesharing9.UserMain.drawer;
 import com.google.gson.JsonObject;
 
@@ -28,8 +29,8 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
-*create by 周杨清 on 2020/6/7
-*介绍: 登录的activity
+ *create by 周杨清 on 2020/6/7
+ *介绍: 登录的activity
  */
 public class ZyqLoginActivity extends AppCompatActivity {
 
@@ -50,13 +51,7 @@ public class ZyqLoginActivity extends AppCompatActivity {
         TextView textView1 = findViewById(R.id.forgrt);
         editText = findViewById(R.id.yonghu);
         editText1 = findViewById(R.id.password);
-        Intent intent=new Intent(ZyqLoginActivity.this, drawer.class);
-        startActivity(intent);
-       /* Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolbar.setTitle("");
-        setSupportActionBar(mToolbar);*/
-
-       /* editText.addTextChangedListener(textWatcher);
+        editText.addTextChangedListener(textWatcher);
         editText1.addTextChangedListener(textWatcher);
 
         button = findViewById(R.id.denglu);
@@ -94,11 +89,11 @@ public class ZyqLoginActivity extends AppCompatActivity {
                             HttpUtil.sendOkHttpRequest1(url,requestBody,new Callback(){
                                 @Override
                                 public void onResponse(Call call, Response response) throws IOException {
-                                        String responseData=response.body().string();
+                                    String responseData=response.body().string();
                                     if(!responseData.equals("")){
                                         User user = JsonAndObject.toUser(responseData);
                                         if(user.getUserstatus()==0){
-                                            Intent intent = new Intent(ZyqLoginActivity.this,ZyqTestActivity.class);
+                                            Intent intent = new Intent(ZyqLoginActivity.this,LmxRecommendActivity.class);
                                             Bundle bundle1 = new Bundle();
                                             bundle1.putString("userid",userid);
                                             intent.putExtras(bundle1);
@@ -121,7 +116,7 @@ public class ZyqLoginActivity extends AppCompatActivity {
                     }).start();
                 }
             }
-        });*/
+        });
     }
 
     // 实现在子线程中显示Toast
@@ -148,8 +143,8 @@ public class ZyqLoginActivity extends AppCompatActivity {
     }
 
     /**
-    *create by 周杨清 on 2020/6/7
-    *介绍: 监听编辑框的状态,全都输入方可点击按钮,否则无响应
+     *create by 周杨清 on 2020/6/7
+     *介绍: 监听编辑框的状态,全都输入方可点击按钮,否则无响应
      */
     TextWatcher textWatcher = new TextWatcher() {
         @Override

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.literaturesharing9.UserMain.drawer;
 import com.example.literaturesharing9.entity.Work;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -106,7 +107,9 @@ public class LmxRecommendActivity extends AppCompatActivity {
         textView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent=new Intent(LmxRecommendActivity.this, drawer.class);
+                intent.putExtra("id",userid);
+                startActivity(intent);
             }
         });
     }
