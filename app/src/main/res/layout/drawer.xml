@@ -12,6 +12,7 @@
             android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:text="欢迎来到个人中心"
             android:layout_weight="1"
             ></FrameLayout>
         <!--3. 底部的四个选项菜单-->
@@ -130,19 +131,12 @@
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-        android:id="@+id/draw_left_menu"
-        android:background="#ffff"
+    <GridView
+        android:id="@+id/grid_photo"
+        android:layout_gravity="start"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:orientation="vertical">
-        <Button
-            android:id="@+id/draw_button"
-            android:text="打开1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+        android:numColumns="3" />
 </androidx.drawerlayout.widget.DrawerLayout>
 
 

@@ -6,13 +6,17 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="22dp"
+        android:textSize="40dp"
         android:textColor="#000000"
         android:gravity="center"
         android:text="我的作品"
         />
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycle_view"
+    <GridView
+        android:id="@+id/grid_zuopin"
+        android:layout_gravity="start"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent"
+        android:verticalSpacing="40dp"
+        android:horizontalSpacing="20dp"
+        android:numColumns="2" />
 </LinearLayout>

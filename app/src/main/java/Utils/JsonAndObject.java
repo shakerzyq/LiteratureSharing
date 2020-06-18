@@ -1,5 +1,6 @@
 package Utils;
 
+import com.example.literaturesharing9.entity.Work;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -45,5 +46,12 @@ public class JsonAndObject {
         Gson gson = new Gson();
         List<WorkForFind> workForFinds = gson.fromJson(responseData, new TypeToken<WorkForFind>() {}.getType());
         return workForFinds;
+    }
+
+    //将json转化为实体类对象
+    public static Work toWork(String responseData){
+        Gson gson = new Gson();
+        Work work = gson.fromJson(responseData, new TypeToken<Work>() {}.getType());
+        return work;
     }
 }

@@ -210,6 +210,8 @@ public class ZyqLibraryActivity extends AppCompatActivity {
                     Map<String,Object> map = new HashMap<String, Object>();
                     map.put("workname",response.get(i).getWorkname());
                     map.put("writername",response.get(i).getUsername());
+                    map.put("workid",response.get(i).getWorkid());
+                    map.put("writerid",response.get(i).getUserid());
                     listitem.add(map);
                 }
                 //创建适配器
@@ -222,8 +224,9 @@ public class ZyqLibraryActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         map = (Map<String, Object>) parent.getItemAtPosition(position);
                         //Toast.makeText(HistoryActivity.this,map.get("name").toString(),Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(ZyqLibraryActivity.this, ZyqTestActivity.class);
+                        Intent intent = new Intent(ZyqLibraryActivity.this, LmxWorkShowActivity.class);
                         Bundle bundle = new Bundle();
+                        bundle.putString("writername", map.get("writername").toString());
                         bundle.putString("workname", map.get("workname").toString());
                         bundle.putString("workid", map.get("workid").toString());
                         bundle.putString("writerid", map.get("writerid").toString());
