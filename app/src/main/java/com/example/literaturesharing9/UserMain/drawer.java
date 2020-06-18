@@ -75,7 +75,7 @@ public class drawer extends FragmentActivity implements View.OnClickListener{
                 case 1:
                     ArrayList<work> data = (ArrayList<work>) msg.obj;
                     if (fg2 == null) {
-                        fg2 = new SecondFragment(data);
+                        fg2 = new SecondFragment(data,user);
                         fragmentTransaction.add(R.id.content, fg2);
                     } else {
                         fragmentTransaction.show(fg2);

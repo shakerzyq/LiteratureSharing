@@ -6,10 +6,10 @@ public class work{
     private String workid;
     private String workname;
     private String workcontent;
-    private int type;
+    private String type;
     private String worktime;
-    private String pushstatus;
-    private String auditstatus;
+    private int  pushstatus;
+    private int auditstatus;
     private int workzan;
     private String userid;
     public work(){}
@@ -37,13 +37,7 @@ public class work{
         this.workcontent = workcontent;
     }
 
-    public int getType() {
-        return type;
-    }
 
-    public void setType(int type) {
-        this.type = type;
-    }
 
     public String getWorktime() {
         return worktime;
@@ -53,19 +47,27 @@ public class work{
         this.worktime = worktime;
     }
 
-    public String getPushstatus() {
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getPushstatus() {
         return pushstatus;
     }
 
-    public void setPushstatus(String pushstatus) {
+    public void setPushstatus(int pushstatus) {
         this.pushstatus = pushstatus;
     }
 
-    public String getAuditstatus() {
+    public int getAuditstatus() {
         return auditstatus;
     }
 
-    public void setAuditstatus(String auditstatus) {
+    public void setAuditstatus(int auditstatus) {
         this.auditstatus = auditstatus;
     }
 

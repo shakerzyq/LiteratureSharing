@@ -114,14 +114,7 @@ public class ThirdFragment extends Fragment {
     public void save(){
         work work=new work();
         String name=workname.getText().toString();
-        String temp=worktype.getSelectedItem().toString();
-        int type=1;
-        if(temp.equals("小说")){
-            type=2;
-        }
-        if(temp.equals("散文")){
-            type=3;
-        }
+        String type=worktype.getSelectedItem().toString();
         String content=workcontent.getText().toString();
         if(name.equals("")){
             Message msg = new Message();
@@ -145,8 +138,8 @@ public class ThirdFragment extends Fragment {
         work.setUserid(userid);
         work.setType(type);
         work.setWorkzan(0);
-        work.setAuditstatus("0");
-        work.setPushstatus("0");
+        work.setAuditstatus(0);
+        work.setPushstatus(0);
         Gson gson=new GsonBuilder().serializeNulls().create();
         String work1=gson.toJson(work);
         String path="http://10.0.2.2:8081/jdbc/addwork";

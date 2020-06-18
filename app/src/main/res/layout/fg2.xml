@@ -17,6 +17,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:verticalSpacing="40dp"
-        android:horizontalSpacing="40dp"
-        android:numColumns="2" />
+        android:numColumns="1" />
 </LinearLayout>

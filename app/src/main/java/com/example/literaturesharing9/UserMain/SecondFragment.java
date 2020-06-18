@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import com.example.literaturesharing9.LmxShowWorkActivity;
 import com.example.literaturesharing9.R;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,6 +26,7 @@ import java.net.URL;
 import java.util.ArrayList;
 public class SecondFragment extends Fragment {
     private AlertDialog.Builder builder;
+    private user user;
     private boolean flag = true;
     private String id;
     private GridView recyclerView;
@@ -35,8 +38,9 @@ public class SecondFragment extends Fragment {
         public String setdata(String data);
     }
 
-    public SecondFragment(ArrayList<work>list){
+    public SecondFragment(ArrayList<work>list,user user){
         this.list=list;
+        this.user=user;
     }
 
     public void setCallback(callback callback){
@@ -46,7 +50,7 @@ public class SecondFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fg2, container, false);
         recyclerView=(GridView)view.findViewById(R.id.grid_zuopin);
-        workadapter=new workadapter(list,getContext());
+        workadapter=new workadapter(list,getContext(),user,SecondFragment.this);
         recyclerView.setAdapter(workadapter);
         workadapter.setOnremoveListnner(new workadapter.OnremoveListnner() {
             @Override
