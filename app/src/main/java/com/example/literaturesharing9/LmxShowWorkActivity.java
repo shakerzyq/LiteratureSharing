@@ -91,6 +91,7 @@ public class LmxShowWorkActivity extends AppCompatActivity {
         writername = bundle.getString("writername");
 
 
+        //声明控件
         lmxtitle = findViewById(R.id.lmxtitle);
         lmxname = findViewById(R.id.lmxname);
         lmxtype = findViewById(R.id.lmxtype);
@@ -102,12 +103,7 @@ public class LmxShowWorkActivity extends AppCompatActivity {
         editText=findViewById(R.id.comment);
         commentbutton=findViewById(R.id.commentbutton);
 
-        /*lmxcontent.setText(workcontent);
-        lmxtitle.setText(workname);
-        lmxname.setText(writername);
-        lmxtype.setText(worktype);
-        lmxtime.setText(worktime);
-        lmxzan.setText(String.valueOf(workzan));*/
+        //初始搜索信息
         sendRequestWithOkHttp2(workid);
 
         //点赞监听器
@@ -115,18 +111,7 @@ public class LmxShowWorkActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-
-
-                //int n = Integer.parseInt(num)+1;
-
                 if (i==1){
-                    /*String  num = lmxzan.getText().toString();
-                    n = Integer.parseInt(num)-1;
-                    lmxzan.setText(String.valueOf(n));
-                    likeview.setTextColor(Color.parseColor("#000000"));
-                    sendRequestWithOkHttp();
-                    Toast.makeText(LmxShowWorkActivity.this,"取消点赞",Toast.LENGTH_SHORT).show();*/
                     Toast.makeText(LmxShowWorkActivity.this,"只能点一次赞",Toast.LENGTH_SHORT).show();
                     i++;
                 }
@@ -139,16 +124,6 @@ public class LmxShowWorkActivity extends AppCompatActivity {
                     Toast.makeText(LmxShowWorkActivity.this,"点赞成功",Toast.LENGTH_SHORT).show();
                     i++;
                 }
-
-                //likenumview.setText(n);
-                //likeview.setImageResource(R.drawable.zan5);
-               /* Resource resource = getBaseContext().getResources();
-                Drawable myDrawable = resource.getDrawable(R.mipmap.zan5) ;
-                likeview.setBackground(R.mipmap.zan5);*/
-
-
-
-
             }
         });
 
@@ -171,13 +146,11 @@ public class LmxShowWorkActivity extends AppCompatActivity {
                                 public void onResponse(Call call, Response response) throws IOException {
                                     String responseData=response.body().string();
                                     if(!responseData.equals("")){
-                                        //User user = JsonAndObject.toUser(responseData);
                                         setEditTextNull();
                                         showToastInThread(LmxShowWorkActivity.this, "评论成功");
                                     }else{
                                         showToastInThread(LmxShowWorkActivity.this, "评论失败");
                                     }
-
                                 }
                                 @Override
                                 public void onFailure(Call call,IOException e){
@@ -214,6 +187,7 @@ public class LmxShowWorkActivity extends AppCompatActivity {
             }
         });
     }
+    //实现在子线程中改变字体颜色
     private void setEditTextNull() {
         runOnUiThread(new Runnable() {
             @Override
@@ -223,6 +197,7 @@ public class LmxShowWorkActivity extends AppCompatActivity {
         });
     }
 
+    //内容显示的okhttp方法
     private void sendRequestWithOkHttp2(final String workid) {
         new Thread(new Runnable() {
             @Override
@@ -251,6 +226,7 @@ public class LmxShowWorkActivity extends AppCompatActivity {
         }).start();
     }
 
+    //点赞的okhttp方法
     private void sendRequestWithOkHttp() {
         new Thread(new Runnable() {
             @Override
@@ -282,6 +258,7 @@ public class LmxShowWorkActivity extends AppCompatActivity {
         return appList;
     }
 
+    //将搜索出的内容显示到控件上
     public void showResponse(final Work work){
         runOnUiThread(new Runnable() {
             @Override

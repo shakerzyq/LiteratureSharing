@@ -29,10 +29,11 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+/**
+ * 文库，显示文章
+ */
 public class ZyqLibraryActivity extends AppCompatActivity {
 
-    private String workid;
-    private String writerid;
     private ListView listView;
     private SimpleAdapter adapter;
     List<Map<String,Object>> listitem = new ArrayList<Map<String,Object>>();
@@ -44,6 +45,7 @@ public class ZyqLibraryActivity extends AppCompatActivity {
     private String url2="http://10.0.2.2:8081/FindWorks/";
     private String url3="http://10.0.2.2:8081/FindWorks/";
 
+    //声明控件
     private TextView poetry;
     private TextView prose;
     private TextView littlenovel;
@@ -51,8 +53,9 @@ public class ZyqLibraryActivity extends AppCompatActivity {
     private ImageButton imageButton;
     private EditText editText;
     private String id;
-
     private TextView[] list = {poetry,prose,littlenovel,travelnoties};
+
+    //okhttp工具类
     private HttpUtil httpUtil = new HttpUtil();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,16 +67,15 @@ public class ZyqLibraryActivity extends AppCompatActivity {
         imageButton = findViewById(R.id.finding);
         editText = findViewById(R.id.findedit);
 
-        //接收传递过来的userid
-       // Bundle bundle = this.getIntent().getExtras();
+        //接受跳转过来的id
         Intent intent=getIntent();
-       // userid = bundle.getString("userid");
         userid=intent.getStringExtra("id");
         list[0] = findViewById(R.id.poetry);
         list[1] = findViewById(R.id.prose);
         list[2] = findViewById(R.id.littlenovel);
         list[3] = findViewById(R.id.travelnotes);
 
+        //诗歌
         list[0].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,6 +86,7 @@ public class ZyqLibraryActivity extends AppCompatActivity {
             }
         });
 
+        //散文
         list[1].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,6 +96,8 @@ public class ZyqLibraryActivity extends AppCompatActivity {
 
             }
         });
+
+        //小说
         list[2].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,6 +107,8 @@ public class ZyqLibraryActivity extends AppCompatActivity {
                // list[2].setBackgroundColor(Color.parseColor("#000000"));
             }
         });
+
+        //游记
         list[3].setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,6 +118,7 @@ public class ZyqLibraryActivity extends AppCompatActivity {
             }
         });
 
+        //通过文字搜索
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,6 +133,7 @@ public class ZyqLibraryActivity extends AppCompatActivity {
         sendRequestWithOkHttp(list[0].getText().toString());
     }
 
+    //设置按键的背景和文字颜色的方法
     public void setStatus(TextView textView){
         for(TextView s:list){
             if (s.equals(textView)){
@@ -181,7 +190,6 @@ public class ZyqLibraryActivity extends AppCompatActivity {
             public void run() {
                 url2 = url2+type;
                 //在子线程中执行Http请求，并将最终的请求结果回调到okhttp3.Callback中
-                //adapter.notifyDataSetChanged();
                 httpUtil.sendOkHttpRequest3(url2, new okhttp3.Callback() {
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {

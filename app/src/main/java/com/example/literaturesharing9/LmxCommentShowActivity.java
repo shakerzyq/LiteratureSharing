@@ -42,18 +42,15 @@ public class LmxCommentShowActivity extends AppCompatActivity {
 
     private SimpleAdapter adapter;
     private Map<String,Object> map;
-
-    private String writername;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lmx_activity_comment_show);
+
         Bundle bundle = this.getIntent().getExtras();
         workid = bundle.getString("workid");
-        //writername = bundle.getString("writername");
         listView = findViewById(R.id.listview3);
         sendRequestWithOkHttp2(workid);
-
     }
 
     //将json转为对象
@@ -63,6 +60,8 @@ public class LmxCommentShowActivity extends AppCompatActivity {
         List<CommentShow> appList = gson.fromJson(jsonData, new TypeToken<List<CommentShow>>() {}.getType());
         return appList;
     }
+
+    //显示评论okhttp
     private void sendRequestWithOkHttp2(final String type) {
         new Thread(new Runnable() {
             @Override
@@ -90,6 +89,7 @@ public class LmxCommentShowActivity extends AppCompatActivity {
         }).start();
     }
 
+    //显示评论
     private void showResponse(final List<CommentShow> response) {
         //在子线程中更新UI
         runOnUiThread(new Runnable() {

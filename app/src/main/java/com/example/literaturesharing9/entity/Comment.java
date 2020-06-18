@@ -1,10 +1,7 @@
 package com.example.literaturesharing9.entity;
 
-import java.util.Date;
-
 /**
- * @author 周杨清
- * @time 2020/6/17
+ * 用于提交评论的实体类
  */
 public class Comment {
     private String workid;

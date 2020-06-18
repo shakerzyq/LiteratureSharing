@@ -32,30 +32,15 @@ public class LmxRecommendActivity extends AppCompatActivity {
 
     private SimpleAdapter adapter;
     private static String WorkTag = "RecommendActivity";
-    TextView show1_name;
-    TextView show1_content;
-    TextView show2_name;
-    TextView show2_content;
-    TextView show3_name;
-    TextView show3_content;
     private String userid;
     private ListView listView;
 
     private String url="http://10.0.2.2:8081/push";
     private String url1="http://10.0.2.2:8081/push";
 
-    private String url2="http://10.0.2.2:8081/FindWorks/";
-    private String url3="http://10.0.2.2:8081/FindWorks/";
-
-    public static String idUser;
-
     private ArrayList<Work> work_list = new ArrayList<Work>();
     private HttpUtil httpUtil = new HttpUtil();
-
-
     List<Map<String,Object>> listitem = new ArrayList<Map<String,Object>>();
-
-
     private Map<String,Object> map;
 
     @Override
@@ -106,7 +91,7 @@ public class LmxRecommendActivity extends AppCompatActivity {
         });
     }
 
-
+    //界面显示内容的okhttp
     private void sendRequestWithOkHttp() {
         new Thread(new Runnable() {
             @Override
@@ -122,7 +107,6 @@ public class LmxRecommendActivity extends AppCompatActivity {
                         for(WorkForFind workForFind:works1){
                             System.out.println(workForFind);
                         }
-
                         //显示UI界面，调用的showResponse方法
                         showResponse(works1);
 
@@ -144,33 +128,8 @@ public class LmxRecommendActivity extends AppCompatActivity {
         List<WorkForFind> appList = gson.fromJson(jsonData, new TypeToken<List<WorkForFind>>() {}.getType());
         return appList;
     }
-    private void sendRequestWithOkHttp2(final String type) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                url2 = url2+type;
-                //在子线程中执行Http请求，并将最终的请求结果回调到okhttp3.Callback中
-                //adapter.notifyDataSetChanged();
-                httpUtil.sendOkHttpRequest3(url2, new Callback() {
-                    @Override
-                    public void onResponse(Call call, Response response) throws IOException {
-                        //得到服务器返回的具体内容
-                        String responseData = response.body().string();
-                        List<WorkForFind> works = parseJSONWithGSON(responseData);
-                        //显示UI界面，调用的showResponse方法
-                        showResponse(works);
-                        url2=url3;
-                    }
 
-                    @Override
-                    public void onFailure(Call call, IOException e) {
-                        //在这里进行异常情况处理
-                    }
-                });
-            }
-        }).start();
-    }
-
+    //显示内容
     private void showResponse(final List<WorkForFind> response) {
         //在子线程中更新UI
         runOnUiThread(new Runnable() {
@@ -194,7 +153,6 @@ public class LmxRecommendActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         map = (Map<String, Object>) parent.getItemAtPosition(position);
-                        //Toast.makeText(HistoryActivity.this,map.get("name").toString(),Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(LmxRecommendActivity.this, LmxShowWorkActivity.class);
                         Bundle bundle = new Bundle();
                         bundle.putString("writername", map.get("writername").toString());
@@ -204,7 +162,6 @@ public class LmxRecommendActivity extends AppCompatActivity {
                         bundle.putString("userid", userid);
                         intent.putExtras(bundle);
                         startActivity(intent);
-                        //finish();
                     }
                 });
                 registerForContextMenu(listView);

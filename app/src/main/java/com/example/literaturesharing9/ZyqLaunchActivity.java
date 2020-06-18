@@ -11,6 +11,9 @@ import android.view.Menu;
 
 import static androidx.core.content.ContextCompat.startActivity;
 
+/**
+ * 加载界面
+ */
 public class ZyqLaunchActivity extends Activity {
 
     @Override

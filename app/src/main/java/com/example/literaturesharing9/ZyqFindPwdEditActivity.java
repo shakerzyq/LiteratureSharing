@@ -19,6 +19,9 @@ import okhttp3.Callback;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+/**
+ * 输入密保问题答案
+ */
 public class ZyqFindPwdEditActivity extends AppCompatActivity {
 
     private String responseData;
@@ -37,6 +40,7 @@ public class ZyqFindPwdEditActivity extends AppCompatActivity {
         account = bundle.getString("account");
 
         responseData = bundle.getString("responseData");
+
 
         TextView question1 = findViewById(R.id.question1);
         TextView question2 = findViewById(R.id.question2);

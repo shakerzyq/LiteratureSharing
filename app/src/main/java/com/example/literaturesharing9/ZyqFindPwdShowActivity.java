@@ -11,6 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import Utils.JsonAndObject;
 import domain.User;
 
+/**
+ * 显示密码
+ */
 public class ZyqFindPwdShowActivity extends AppCompatActivity {
 
     private String responseDate;

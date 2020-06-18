@@ -1,8 +1,6 @@
 package com.example.literaturesharing9.entity;
 
 /**
- * @author 周杨清
- * @time 2020/6/17
  * 用于显示评论的实体类
  */
 public class CommentShow {

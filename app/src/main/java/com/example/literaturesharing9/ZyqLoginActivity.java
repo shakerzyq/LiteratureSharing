@@ -134,24 +134,11 @@ public class ZyqLoginActivity extends AppCompatActivity {
             }
         });
     }
-
-    /*
-          使用Gson解析response的JSON数据
-          本来总共是有三步的，一、二步在方法调用之前执行了
-        */
-    private String getStatus(JsonObject responseBodyJSONObject) {
-        /* 使用Gson解析response的JSON数据的第三步
-           通过JSON对象获取对应的属性值 */
-        String status = responseBodyJSONObject.get("status").getAsString();
-        // 登录成功返回的json为{ "status":"success", "data":null }
-        // 只获取status即可，data为null
-        return status;
-    }
-
     /**
     *create by 周杨清 on 2020/6/7
     *介绍: 监听编辑框的状态,全都输入方可点击按钮,否则无响应
      */
+
     TextWatcher textWatcher = new TextWatcher() {
         @Override
         public void beforeTextChanged(CharSequence s, int start, int count, int after) {

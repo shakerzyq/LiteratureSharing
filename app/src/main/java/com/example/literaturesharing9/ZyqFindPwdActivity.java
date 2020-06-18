@@ -18,6 +18,10 @@ import domain.User;
 import okhttp3.Call;
 import okhttp3.Response;
 
+
+/**
+ * 核实账号
+ */
 public class ZyqFindPwdActivity extends AppCompatActivity {
 
     private String account=null;
@@ -37,6 +41,7 @@ public class ZyqFindPwdActivity extends AppCompatActivity {
 
         textView = findViewById(R.id.toast1);
 
+        //核实账号的监听器
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,8 +50,6 @@ public class ZyqFindPwdActivity extends AppCompatActivity {
                 HttpUtil httpUtil = new HttpUtil();
                 User user = new User(account);
                 if (account.length()==11) {
-
-
                     if (!user.getUserid().equals("")) {
                         url=url+user.getUserid();
                         httpUtil.sendOkHttpRequest3(url,
@@ -65,7 +68,6 @@ public class ZyqFindPwdActivity extends AppCompatActivity {
                                             bundle.putString("account", account);
                                             intent.putExtras(bundle);
                                             startActivity(intent);
-                                            //finish();
                                         }else{
                                             showToastInThread(ZyqFindPwdActivity.this, "该账号不存在");
                                         }

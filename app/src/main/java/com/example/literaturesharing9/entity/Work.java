@@ -2,7 +2,9 @@ package com.example.literaturesharing9.entity;
 
 
 import java.io.Serializable;
-
+/**
+*作品的普通实体类
+ */
 public class Work implements Serializable {
     private String workId;
     private String workName;
