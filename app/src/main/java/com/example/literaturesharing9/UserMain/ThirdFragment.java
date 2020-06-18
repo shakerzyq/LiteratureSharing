@@ -145,6 +145,8 @@ public class ThirdFragment extends Fragment {
         work.setUserid(userid);
         work.setType(type);
         work.setWorkzan(0);
+        work.setAuditstatus("0");
+        work.setPushstatus("0");
         Gson gson=new GsonBuilder().serializeNulls().create();
         String work1=gson.toJson(work);
         String path="http://10.0.2.2:8081/jdbc/addwork";
