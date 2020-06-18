@@ -59,6 +59,7 @@ public class ZyqLoginActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //跳转
                 Intent intent = new Intent(ZyqLoginActivity.this, ZyqRegister1Activity.class);
                 startActivity(intent);
             }
