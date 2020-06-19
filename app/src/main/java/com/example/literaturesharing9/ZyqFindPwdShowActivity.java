@@ -1,15 +1,15 @@
 package com.example.literaturesharing9;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+        import android.content.Intent;
+        import android.os.Bundle;
+        import android.view.View;
+        import android.widget.Button;
+        import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
+        import androidx.appcompat.app.AppCompatActivity;
 
-import Utils.JsonAndObject;
-import domain.User;
+        import Utils.JsonAndObject;
+        import domain.User;
 
 /**
  * 显示密码

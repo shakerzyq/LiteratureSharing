@@ -10,15 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import com.example.literaturesharing9.UserMain.drawer;
-import com.google.gson.JsonObject;
-
 import java.io.IOException;
-
 import Utils.HttpUtil;
 import Utils.JsonAndObject;
 import domain.User;
@@ -46,18 +39,14 @@ public class ZyqLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         TextView textView = findViewById(R.id.zhuche);
         TextView textView1 = findViewById(R.id.forgrt);
         editText = findViewById(R.id.yonghu);
         editText1 = findViewById(R.id.password);
-        /*Intent intent=new Intent(ZyqLoginActivity.this, drawer.class);
-        startActivity(intent);*/
-       /* Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolbar.setTitle("");
-        setSupportActionBar(mToolbar);*/
-
         editText.addTextChangedListener(textWatcher);
         editText1.addTextChangedListener(textWatcher);
+
 
         button = findViewById(R.id.denglu);
 

@@ -68,7 +68,7 @@ public class LmxShowWorkActivity extends AppCompatActivity {
     private TextView  lmxname;
     private TextView lmxtype;
     private TextView lmxtime;
-      private TextView lmxcontent;
+    private TextView lmxcontent;
     private TextView lmxzan;
     private String date;
     private RequestBody requestBody;

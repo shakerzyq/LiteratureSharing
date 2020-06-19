@@ -28,11 +28,12 @@ import okhttp3.Response;
 public class ZyqRegiste4Activity extends AppCompatActivity {
 
     private String account;
-    private String question1;
-    private String question2;
+    private String password;
+    private String question1="";
+    private String question2="";
     private String responseData="";
     private RequestBody requestBody;
-    private String url="http://10.0.2.2:8081/pwdprotect";
+    private String url="http://10.0.2.2:8081/user/pwdprotect";
     boolean result1=true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class ZyqRegiste4Activity extends AppCompatActivity {
 
         Bundle bundle = this.getIntent().getExtras();
         account = bundle.getString("account");
+        password = bundle.getString("password");
 
         RadioGroup radioGroup1 = findViewById(R.id.que1rgd);
         RadioGroup radioGroup2 = findViewById(R.id.que2rgd);
@@ -87,19 +89,28 @@ public class ZyqRegiste4Activity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!editText1.getText().equals("")&&!editText2.getText().equals("")){
-                    PwdProtect pwdProtect = new PwdProtect(question1,editText1.getText().toString(),question2,editText2.getText().toString(),account);
+                if(question1.length()>0&&question2.length()>0) {
+                    if (editText1.getText().toString().length() > 0 && editText2.getText().toString().length() > 0) {
+                        PwdProtect pwdProtect = new PwdProtect(question1, editText1.getText().toString(), question2, editText2.getText().toString(), account);
 
-                    requestBody = JsonAndObject.toJson(pwdProtect);
-                    getResult();
-                }
-                if (result1){
-                    Toast.makeText(ZyqRegiste4Activity.this,"提交密保成功",Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(ZyqRegiste4Activity.this, ZyqLoginActivity.class);
-                    startActivity(intent);
-                    finish();
+                        requestBody = JsonAndObject.toJson(pwdProtect);
+                        getResult();
+                        if (result1) {
+                            Intent intent = new Intent(ZyqRegiste4Activity.this, ZyqUserNumActivity.class);
+                            Bundle bundle1 = new Bundle();
+                            bundle1.putString("account",account);
+                            bundle1.putString("password",password);
+                            intent.putExtras(bundle1);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            Toast.makeText(ZyqRegiste4Activity.this, "抱歉!系统异常,提交失败!", Toast.LENGTH_LONG).show();
+                        }
+                    }else{
+                        Toast.makeText(ZyqRegiste4Activity.this, "答案不能为空", Toast.LENGTH_LONG).show();
+                    }
                 }else{
-                    Toast.makeText(ZyqRegiste4Activity.this,"抱歉!系统异常,提交失败!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(ZyqRegiste4Activity.this, "请选择问题", Toast.LENGTH_LONG).show();
                 }
             }
         });

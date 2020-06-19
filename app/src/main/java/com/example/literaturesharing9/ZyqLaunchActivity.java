@@ -1,7 +1,5 @@
 package com.example.literaturesharing9;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -9,7 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 
-import static androidx.core.content.ContextCompat.startActivity;
 
 /**
  * 加载界面
@@ -30,8 +27,8 @@ public class ZyqLaunchActivity extends Activity {
 
         @Override
         public void run() {
-            //Intent intent = new Intent(ZyqLaunchActivity.this,ZyqLoginActivity.class);
-            startActivity(new Intent(getApplication(),ZyqLoginActivity.class));
+            Intent intent = new Intent(ZyqLaunchActivity.this, ZyqLoginActivity.class);
+            startActivity(intent);
             ZyqLaunchActivity.this.finish();
         }
     }

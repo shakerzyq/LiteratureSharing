@@ -24,7 +24,6 @@ public class ZyqRegister3Activity extends AppCompatActivity {
 
     private String url="http://10.0.2.2:8081/user";
     private String sex=null;//设置所选的性别
-    private String responseData="";
     private RequestBody requestBody;
     private String account;
     private String password;
@@ -58,14 +57,15 @@ public class ZyqRegister3Activity extends AppCompatActivity {
                 }
             }
         });
-
+        //提交注册的监听器
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String birthday = inputbirth.getText().toString();
+                //String username = inputname.getText().toString()
                 String[] strlist = birthday.split("-");
 
-                if (!inputname.getText().equals("")&&!inputbirth.getText().equals("")&&!sex.equals("")){
+                if (inputname.getText().toString().length()>0&&inputbirth.getText().toString().length()>0){
                     if(strlist[0].length()==4&&strlist[1].length()==2&&strlist[2].length()==2) {
                         User user = new User(account, inputname.getText().toString(), password,
                                 inputbirth.getText().toString(), sex, inputidea.getText().toString()
@@ -73,10 +73,10 @@ public class ZyqRegister3Activity extends AppCompatActivity {
                         requestBody = JsonAndObject.toJson(user);
                         getResult();
                         if (result1) {
-                            Toast.makeText(ZyqRegister3Activity.this, "注册成功", Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(ZyqRegister3Activity.this, ZyqRegiste4Activity.class);
                             Bundle bundle1 = new Bundle();
                             bundle1.putString("account", account);
+                            bundle1.putString("password", password);
                             intent.putExtras(bundle1);
                             startActivity(intent);
                             finish();
@@ -86,15 +86,13 @@ public class ZyqRegister3Activity extends AppCompatActivity {
                     }else {
                         Toast.makeText(ZyqRegister3Activity.this, "生日格式不正确", Toast.LENGTH_SHORT).show();
                     }
-
-
-
                 }else{
                     Toast.makeText(ZyqRegister3Activity.this,"必填的内容不能为空",Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
+    //用于判断结果的okhttp方法
     private void getResult() {
         new Thread(new Runnable() {
             @Override

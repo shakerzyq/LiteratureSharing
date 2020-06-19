@@ -61,7 +61,7 @@ public class ZyqFindPwdActivity extends AppCompatActivity {
                                     @Override
                                     public void onResponse(Call call, Response response) throws IOException {
                                         responseData = response.body().string();
-                                        if (!responseData.equals("")) {
+                                        if (responseData.length()>0) {
                                             Intent intent = new Intent(ZyqFindPwdActivity.this, ZyqFindPwdEditActivity.class);
                                             Bundle bundle = new Bundle();
                                             bundle.putString("responseData",responseData);
